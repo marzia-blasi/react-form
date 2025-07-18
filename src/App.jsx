@@ -43,9 +43,9 @@ function App() {
   {
     /**bonus della rimozione */
   }
-  const removeGame = (id) => {
-    const updateGame = newGames.filter(({ id, title }) => {
-      return id !== id;
+  const removeGame = (idToRemove) => {
+    const updateGame = newGames.filter(({ id }) => {
+      return id !== idToRemove;
     });
     setNewGames(updateGame);
   };
