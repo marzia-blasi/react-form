@@ -37,6 +37,14 @@ function App() {
     },
   ];
 
+  const [game, setGame] = useState("");
+  const [newGames, setNewGames] = useState(boardGames);
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    setNewGames([game, ...newGames]);
+  }
+
   return (
     <>
       <div className="container">
@@ -50,13 +58,16 @@ function App() {
           })}
         </ul>
         <div>
-          <form action="">
+          <form onSubmit={handleSubmit}>
+            <input type="text" placeholder="tu funzionerai ? " />
             <input
               className="form-control form-control-sm"
               type="text"
               placeholder="a cosa giocherai? "
-              aria-label=".form-control-sm example"
+              value={newGames}
+              onChange={(e) => setNewGames(e.target.value)}
             ></input>
+            <button type="submit">Funzionerà? </button>
           </form>
         </div>
       </div>
