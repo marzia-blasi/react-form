@@ -49,6 +49,16 @@ function App() {
             );
           })}
         </ul>
+        <div>
+          <form action="">
+            <input
+              className="form-control form-control-sm"
+              type="text"
+              placeholder="a cosa giocherai? "
+              aria-label=".form-control-sm example"
+            ></input>
+          </form>
+        </div>
       </div>
     </>
   );
