@@ -40,6 +40,16 @@ function App() {
   const [newGames, setNewGames] = useState(boardGames);
   const [game, setGame] = useState("");
 
+  {
+    /**bonus della rimozione */
+  }
+  const removeGame = (id) => {
+    const updateGame = newGames.filter(({ id, title }) => {
+      return id !== id;
+    });
+    setNewGames(updateGame);
+  };
+
   function handleSubmit(e) {
     e.preventDefault();
     setNewGames([
@@ -62,14 +72,14 @@ function App() {
           {newGames.map(({ id, title }) => {
             return (
               <li className="list-group-item" key={id}>
-                {title}
+                {title}{" "}
+                <button onClick={() => removeGame(id)}>spazzatura</button>
               </li>
             );
           })}
         </ul>
         <div>
           <form onSubmit={handleSubmit}>
-            <input type="text" placeholder="tu funzionerai ? " />
             <input
               className="form-control form-control-sm"
               type="text"
