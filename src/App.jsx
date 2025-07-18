@@ -37,19 +37,29 @@ function App() {
     },
   ];
 
-  const [game, setGame] = useState("");
   const [newGames, setNewGames] = useState(boardGames);
+  const [game, setGame] = useState("");
 
   function handleSubmit(e) {
     e.preventDefault();
-    setNewGames([game, ...newGames]);
+    setNewGames([
+      {
+        id: new Date(),
+        title: game,
+        how_to_play:
+          "Muoviti sul tabellone tirando i dadi, acquista proprietà, costruisci case e alberghi, e cerca di mandare in bancarotta gli avversari.",
+      },
+      ...newGames,
+    ]);
+
+    setGame("");
   }
 
   return (
     <>
       <div className="container">
         <ul className="list-group">
-          {boardGames.map(({ id, title }) => {
+          {newGames.map(({ id, title }) => {
             return (
               <li className="list-group-item" key={id}>
                 {title}
@@ -64,8 +74,8 @@ function App() {
               className="form-control form-control-sm"
               type="text"
               placeholder="a cosa giocherai? "
-              value={newGames}
-              onChange={(e) => setNewGames(e.target.value)}
+              value={game}
+              onChange={(e) => setGame(e.target.value)}
             ></input>
             <button type="submit">Funzionerà? </button>
           </form>
