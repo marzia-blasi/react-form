@@ -1,7 +1,5 @@
 import { useState } from "react";
 
-import "./App.css";
-
 function App() {
   {
     /**Arrey boardGames  */
@@ -39,7 +37,21 @@ function App() {
     },
   ];
 
-  return <></>;
+  return (
+    <>
+      <div className="container">
+        <ul className="list-group">
+          {boardGames.map(({ id, title }) => {
+            return (
+              <li className="list-group-item" key={id}>
+                {title}
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    </>
+  );
 }
 
 export default App;
